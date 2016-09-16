@@ -1,0 +1,8 @@
+{
+  "version": "0.0.0",
+  "name": "pour-fellow",
+  "appPath": "src/main/webapp/",
+  "dependencies": {
+    "angular": "2.0.0"
+  }
+}

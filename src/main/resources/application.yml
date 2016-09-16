@@ -1,0 +1,6 @@
+spring:
+    application:
+      name: Pour Fellow
+    freemarker:
+      template-loader-path: app/
+      suffix: .ftl

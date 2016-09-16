@@ -1,0 +1,4 @@
+spring:
+    freemarker:
+      template-loader-path: app/
+      suffix: .ftl
