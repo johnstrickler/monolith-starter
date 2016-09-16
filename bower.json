@@ -3,6 +3,5 @@
   "name": "pour-fellow",
   "appPath": "src/main/webapp/",
   "dependencies": {
-    "angular": "2.0.0"
   }
 }
