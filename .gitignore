@@ -5,6 +5,8 @@ node_modules/
 out/
 src/main/webapp/vendor/
 src/main/webapp/bower_components/
+src/main/webapp/app/**/*.ts
+src/main/webapp/app/**/*.map
 target/
 typings/
 *.iml
