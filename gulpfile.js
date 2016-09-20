@@ -1,13 +1,11 @@
 'use strict';
 
 var gulp = require('gulp'),
-    rev = require('gulp-rev'),
     ngConstant = require('gulp-ng-constant'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync'),
     plumber = require('gulp-plumber'),
-    changed = require('gulp-changed'),
     ts = require('gulp-typescript'),
     sourcemaps = require('gulp-sourcemaps'),
     tslint = require('gulp-tslint');
@@ -71,6 +69,7 @@ gulp.task('ngconstant:prod', function () {
         .pipe(gulp.dest(config.app + 'app/'));
 });
 
+// TODO not called (not part of a task workflow)
 // check app for any tslint errors
 gulp.task('tslint', function() {
     return gulp.src(config.app + 'app/**/*.ts')
@@ -80,24 +79,24 @@ gulp.task('tslint', function() {
 
 // started via serve.js
 gulp.task('watch', function () {
-    gulp.watch('bower.json', ['install']);
-    gulp.watch('./gulp/config.js', ['ngconstant:dev', 'tscompile', ]);
-    gulp.watch(config.app + 'content/css/**/*.css', ['sync:styles']);
-    gulp.watch(config.app + 'content/images/**', ['images']);
+    //gulp.watch('./gulp/config.js', ['ngconstant:dev', 'tscompile']);
+    gulp.watch(config.app + 'css/**/*.css', ['sync:styles']);
     gulp.watch(config.app + 'app/**/*.ts', ['tscompile']);
-    gulp.watch(config.app + 'app/**/*.html', ['copy:html']);
-    gulp.watch(config.app + 'i18n/**/*.json', ['copy:i18n']);
-    gulp.watch([config.dist + '*.html', config.dist + 'app/**', config.dist + 'i18n/**']).on('change', browserSync.reload);
+    gulp.watch([
+        config.app + 'app/**/*.ts',
+        config.app + 'css/**/*.css',
+        config.app + '*.ftl'
+    ]).on('change', browserSync.reload);
 });
 
 gulp.task('install', function () {
     runSequence('copy', 'inject', 'ngconstant:dev', 'tscompile');
 });
 
-gulp.task('serve', ['install'], serve);
-
 gulp.task('build', function (cb) {
     runSequence('copy', 'inject', 'ngconstant:prod', 'tscompile', cb);
 });
+
+gulp.task('serve', ['install'], serve);
 
 gulp.task('default', ['serve']);
