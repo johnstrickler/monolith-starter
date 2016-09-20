@@ -14,7 +14,6 @@ var serve = require('./gulp/serve'),
     util = require('./gulp/utils'),
     copy = require('./gulp/copy'),
     inject = require('./gulp/inject'),
-    build = require('./gulp/build'),
     config = require('./gulp/config');
 
 var tsProject = ts.createProject('tsconfig.json');
@@ -34,7 +33,7 @@ gulp.task('tscompile', function(cb){
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(config.dist  + 'app'))
+        .pipe(gulp.dest(config.app  + 'app'))
         .pipe(browserSync.reload({stream: true}));
 });
 

@@ -57,7 +57,7 @@ module.exports = function () {
         open: true,
         port: config.port,
         server: {
-            baseDir: config.dist,
+            baseDir: config.app,
             middleware: proxies
         }
     });

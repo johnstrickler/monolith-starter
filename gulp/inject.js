@@ -14,10 +14,10 @@ module.exports = {
 
 function vendor() {
 
-    var stream = gulp.src(config.src + 'index.html')
+    var stream = gulp.src(config.app + 'index.ftl')
         .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src('src/main/webapp/vendor/**/*.js', {read: false})))
-        .pipe(gulp.dest(config.src));
+        .pipe(inject(gulp.src(config.app + 'vendor/**/*.js', {read: false})))
+        .pipe(gulp.dest(config.app));
 
     return stream;
 }

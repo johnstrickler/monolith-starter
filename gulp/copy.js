@@ -19,7 +19,7 @@ function nodeDeps(){
         'node_modules/rxjs/**/*.js',
         'node_modules/ui-router-ng2/**/*.js'
     ], { base: 'node_modules' })
-        .pipe(gulp.dest(config.dist + 'vendor'));
+        .pipe(gulp.dest(config.app + 'vendor'));
 }
 
 // copy specific npm dependencies to accessible /vendor folder
@@ -27,5 +27,5 @@ function bowerDeps(){
     return gulp.src([
         'bower_components/jquery/dist/jquery.min.js'
     ], { base: 'bower_components' })
-        .pipe(gulp.dest(config.dist + 'vendor'));
+        .pipe(gulp.dest(config.app + 'vendor'));
 }
