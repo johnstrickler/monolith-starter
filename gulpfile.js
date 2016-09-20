@@ -36,10 +36,7 @@ gulp.task('clean', function () {
 });
 
 // currently just an alias to copy:deps
-gulp.task('copy', ['copy:deps']);
-gulp.task('copy:deps', copy.deps);
-
-
+gulp.task('copy', [copy.nodeDeps, copy.bowerDeps]);
 
 gulp.task('copy:temp', function () {
     return gulp.src([config.app + '/**/*', '!' + config.app + '/**/*.ts', '!' + config.sassSrc])
@@ -48,24 +45,11 @@ gulp.task('copy:temp', function () {
         .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('images', function () {
-    return gulp.src(config.app + 'content/images/**')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(changed(config.dist + 'content/images'))
-        .pipe(imagemin({optimizationLevel: 5, progressive: true, interlaced: true}))
-        .pipe(rev())
-        .pipe(gulp.dest(config.dist + 'content/images'))
-        .pipe(rev.manifest(config.revManifest, {
-            base: config.dist,
-            merge: true
-        }))
-        .pipe(gulp.dest(config.dist))
-        .pipe(browserSync.reload({stream: true}));
-});
+
 
 
 gulp.task('styles', [], function () {
-    return gulp.src(config.app + 'content/css')
+    return gulp.src(config.app + 'css')
         .pipe(browserSync.reload({stream: true}));
 });
 
@@ -89,17 +73,6 @@ gulp.task('inject:test', inject.test);
 gulp.task('inject:troubleshoot', inject.troubleshoot);
 
 gulp.task('assets:prod', ['images', 'styles', 'html', 'copy:swagger'], build);
-
-gulp.task('html', function () {
-    return gulp.src(config.app + 'app/**/*.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(templateCache({
-            module: 'angular2ClientApp',
-            root: 'app/',
-            moduleSystem: 'IIFE'
-        }))
-        .pipe(gulp.dest(config.tmp));
-});
 
 gulp.task('ngconstant:dev', function () {
     return ngConstant({

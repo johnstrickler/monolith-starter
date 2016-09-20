@@ -3,7 +3,6 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     inject = require('gulp-inject'),
-    es = require('event-stream'),
     bowerFiles = require('main-bower-files');
 
 var handleErrors = require('./handle-errors');
@@ -11,8 +10,7 @@ var handleErrors = require('./handle-errors');
 var config = require('./config');
 
 module.exports = {
-    vendor: vendor,
-    test: test
+    vendor: vendor
 }
 
 function vendor() {
@@ -36,16 +34,15 @@ function vendor() {
 }
 
 // TODO - integrate Karma tests
-function test() {
-    return gulp.src(config.test + 'karma.conf.js')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src(bowerFiles({includeDev: true, filter: ['**/*.js']}), {read: false}), {
-            starttag: '// bower:js',
-            endtag: '// endbower',
-            transform: function (filepath) {
-                return '\'' + filepath.substring(1, filepath.length) + '\',';
-            }
-        }))
-        .pipe(gulp.dest(config.test));
-}
-
+// function test() {
+//     return gulp.src(config.test + 'karma.conf.js')
+//         .pipe(plumber({errorHandler: handleErrors}))
+//         .pipe(inject(gulp.src(bowerFiles({includeDev: true, filter: ['**/*.js']}), {read: false}), {
+//             starttag: '// bower:js',
+//             endtag: '// endbower',
+//             transform: function (filepath) {
+//                 return '\'' + filepath.substring(1, filepath.length) + '\',';
+//             }
+//         }))
+//         .pipe(gulp.dest(config.test));
+// }
