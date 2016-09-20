@@ -12,12 +12,10 @@ module.exports = {
     vendor: vendor
 }
 
+// TODO currently injects 770 dependencies ..
 function vendor() {
-
-    var stream = gulp.src(config.app + 'index.ftl')
+    return gulp.src(config.app + 'index.ftl')
         .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src(config.app + 'vendor/**/*.js', {read: false})))
+       // .pipe(inject(gulp.src(config.app + 'vendor/**/*.js', {read: false})))
         .pipe(gulp.dest(config.app));
-
-    return stream;
 }
