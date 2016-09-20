@@ -10,3 +10,9 @@ This is a personal sandbox project.  My goal is to make it a modern, lightweight
 - One button build and deploy (for full app - server and client)
 
 This sample project is heavily influenced by [Jhipster](https://github.com/jhipster/generator-jhipster).  
+
+--
+
+# Build and Deploy Step(s)
+
+Coming Soon!   
