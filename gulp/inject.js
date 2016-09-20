@@ -2,8 +2,7 @@
 
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    inject = require('gulp-inject'),
-    bowerFiles = require('main-bower-files');
+    inject = require('gulp-inject');
 
 var handleErrors = require('./handle-errors');
 
@@ -15,34 +14,10 @@ module.exports = {
 
 function vendor() {
 
-    var stream = gulp.src(config.dist + 'index.html')
+    var stream = gulp.src(config.src + 'index.html')
         .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src(bowerFiles(), {read: false}), {
-            name: 'bower',
-            relative: false,
-            transform: function (filepath) {
-                if ( filepath.indexOf('.css') !== -1 ) {
-                    return '<link rel="stylesheet" href="' + filepath.replace('/src/main/webapp/', '') + '"/>'; // TODO temp hack
-                } else {
-                    return '<script src="' + filepath.replace('/src/main/webapp/', '') + '"></script>'; // TODO temp hack
-                }                
-            }
-        }))
-        .pipe(gulp.dest(config.dist));
+        .pipe(inject(gulp.src('src/main/webapp/vendor/**/*.js', {read: false})))
+        .pipe(gulp.dest(config.src));
 
     return stream;
 }
-
-// TODO - integrate Karma tests
-// function test() {
-//     return gulp.src(config.test + 'karma.conf.js')
-//         .pipe(plumber({errorHandler: handleErrors}))
-//         .pipe(inject(gulp.src(bowerFiles({includeDev: true, filter: ['**/*.js']}), {read: false}), {
-//             starttag: '// bower:js',
-//             endtag: '// endbower',
-//             transform: function (filepath) {
-//                 return '\'' + filepath.substring(1, filepath.length) + '\',';
-//             }
-//         }))
-//         .pipe(gulp.dest(config.test));
-// }

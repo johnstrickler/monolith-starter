@@ -1,15 +1,19 @@
 'use strict';
 
 var gulp = require('gulp'),
-    util = require('./utils'),
     url = require('url'),
     browserSync = require('browser-sync'),
     proxy = require('proxy-middleware');
 
-var config = require('./config');
+var config = require('./config'),
+    util = require('./utils');
+
+// TODO this is bizarre, should look into cleaning this up as soon as I have a working base
 
 module.exports = function () {
+
     var baseUri = config.uri + config.apiPort;
+
     // Routes to proxy to the backend. Routes ending with a / will setup
     // a redirect so that if accessed without a trailing slash, will
     // redirect. This is required for some endpoints for proxy-middleware
