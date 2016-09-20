@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- inject:css -->
+    <!-- endinject -->
+
 </head>
 <!-- 3. Display the application -->
 <body>
     <my-app>Loading...</my-app>
+
+    <!-- inject:js -->
+    <!-- endinject -->
 
     <!-- Polyfill(s) for older browsers -->
     <script src="vendor/core-js/client/shim.min.js"></script>

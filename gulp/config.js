@@ -3,8 +3,6 @@
 module.exports = {
     app: 'src/main/webapp/',
     dist: 'target',
-    env: 'dev',
-    test: 'src/test/javascript/',
     bower: 'src/main/webapp/bower_components/',
     tmp: 'target/tmp',
     revManifest: 'target/tmp/rev-manifest.json',

@@ -35,18 +35,11 @@ gulp.task('clean', function () {
     return del([config.dist], { dot: true });
 });
 
-gulp.task('copy', ['copy:fonts', 'copy:html', 'copy:common', 'copy:deps']);
-
-gulp.task('copy:html', copy.html);
-
-gulp.task('copy:fonts', copy.fonts);
-
-gulp.task('copy:common', copy.common);
-
-gulp.task('copy:swagger', copy.swagger);
-
-//copy npm dependencies to vendor folder
+// currently just an alias to copy:deps
+gulp.task('copy', ['copy:deps']);
 gulp.task('copy:deps', copy.deps);
+
+
 
 gulp.task('copy:temp', function () {
     return gulp.src([config.app + '/**/*', '!' + config.app + '/**/*.ts', '!' + config.sassSrc])

@@ -7,6 +7,7 @@ module.exports = function() {
 
     var args = Array.prototype.slice.call(arguments);
     var notification = argv.notification === undefined ? true : argv.notification;
+
     // Send error to notification center with gulp-notify
     if(notification) {
         notify.onError({
@@ -16,7 +17,7 @@ module.exports = function() {
             sound:    "Beep"
         }).apply(this, args);
     }
+
     // Keep gulp from hanging on this task
     this.emit('end');
-
 };
