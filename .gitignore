@@ -1,4 +1,3 @@
-.idea/
 node/
 node_tmp/
 node_modules/
@@ -9,11 +8,4 @@ src/main/webapp/app/**/*.ts
 src/main/webapp/app/**/*.map
 target/
 typings/
-*.iml
-*.iws
-*.ipr
-*.ids
-*.orig
-atlassian-ide-plugin.xml
-.project
 npm-debug.log
