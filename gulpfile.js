@@ -10,7 +10,6 @@ var gulp = require('gulp'),
     tslint = require('gulp-tslint');
 
 var serve = require('./gulp/serve'),
-    util = require('./gulp/utils'),
     copy = require('./gulp/copy'),
     inject = require('./gulp/inject'),
     config = require('./gulp/config');
@@ -52,8 +51,6 @@ gulp.task('watch', function () {
     gulp.watch(config.app + 'css/**/*.css', ['sync:styles']);
     gulp.watch(config.app + 'app/**/*.ts', ['tscompile']);
     gulp.watch([
-        config.app + 'app/**/*.ts',
-        config.app + 'css/**/*.css',
         config.app + '*.ftl'
     ]).on('change', browserSync.reload);
 });

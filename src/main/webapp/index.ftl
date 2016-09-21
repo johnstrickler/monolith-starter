@@ -14,7 +14,7 @@
 <!-- 3. Display the application -->
 <body>
     <my-app>Loading...</my-app>
-    fd
+
     <!-- inject:js -->
     <!-- endinject -->
 
