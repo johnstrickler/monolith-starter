@@ -5,7 +5,7 @@ node_modules/
 out/
 src/main/webapp/vendor/
 bower_components
-src/main/webapp/app/**/*.ts
+src/main/webapp/app/**/*.js
 src/main/webapp/app/**/*.map
 target/
 typings/
