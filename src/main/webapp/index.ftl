@@ -16,6 +16,7 @@
     <my-app>Loading...</my-app>
 
     <!-- inject:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- endinject -->
 
     <!-- Polyfill(s) for older browsers -->

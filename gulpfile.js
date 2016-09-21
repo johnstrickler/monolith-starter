@@ -17,9 +17,9 @@ var serve = require('./gulp/serve'),
 var tsProject = ts.createProject('tsconfig.json');
 
 // currently just an alias to copy:deps
-gulp.task('copy', ['copy:node-deps', 'copy:bower-deps']);
+gulp.task('copy', ['copy:node-deps'/*, 'copy:bower-deps'*/]);
 gulp.task('copy:node-deps', copy.nodeDeps);
-gulp.task('copy:bower-deps', copy.bowerDeps);
+//gulp.task('copy:bower-deps', copy.bowerDeps);
 
 gulp.task('sync:styles', [], function () {
     return gulp.src(config.app + 'css')
