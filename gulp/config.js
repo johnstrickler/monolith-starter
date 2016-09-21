@@ -1,4 +1,5 @@
 'use strict';
+var util = require('./utils');
 
 module.exports = {
     app: 'src/main/webapp/',

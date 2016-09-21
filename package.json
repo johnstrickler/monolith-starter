@@ -45,7 +45,6 @@
     "browser-sync": "^2.16.0",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.1.0",
-    "gulp-ng-constant": "^2.0.0-2",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",

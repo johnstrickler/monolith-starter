@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    ngConstant = require('gulp-ng-constant'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync'),
@@ -40,35 +39,7 @@ gulp.task('tscompile', function(cb){
 gulp.task('inject', ['inject:vendor']);
 gulp.task('inject:vendor', inject.vendor);
 
-gulp.task('ngconstant:dev', function () {
-    return ngConstant({
-        name: 'angular2ClientApp.common',
-        constants: {
-            VERSION: util.parseVersion(),
-            DEBUG_INFO_ENABLED: true
-        },
-        template: config.constantTemplate,
-        stream: true
-    })
-        .pipe(rename('app.constants.ts'))
-        .pipe(gulp.dest(config.app + 'app/'));
-});
-
-gulp.task('ngconstant:prod', function () {
-    return ngConstant({
-        name: 'angular2ClientApp.common',
-        constants: {
-            VERSION: util.parseVersion(),
-            DEBUG_INFO_ENABLED: false
-        },
-        template: config.constantTemplate,
-        stream: true
-    })
-        .pipe(rename('app.constants.ts'))
-        .pipe(gulp.dest(config.app + 'app/'));
-});
-
-// TODO not called (not part of a task workflow)
+// TODO not called yet (not part of a task workflow)
 // check app for any tslint errors
 gulp.task('tslint', function() {
     return gulp.src(config.app + 'app/**/*.ts')
@@ -78,7 +49,6 @@ gulp.task('tslint', function() {
 
 // started via serve.js
 gulp.task('watch', function () {
-    //gulp.watch('./gulp/config.js', ['ngconstant:dev', 'tscompile']);
     gulp.watch(config.app + 'css/**/*.css', ['sync:styles']);
     gulp.watch(config.app + 'app/**/*.ts', ['tscompile']);
     gulp.watch([
@@ -89,11 +59,11 @@ gulp.task('watch', function () {
 });
 
 gulp.task('install', function () {
-    runSequence('copy', 'inject', 'ngconstant:dev', 'tscompile');
+    runSequence('copy', 'inject', 'tscompile');
 });
 
 gulp.task('build', function (cb) {
-    runSequence('copy', 'inject', 'ngconstant:prod', 'tscompile', cb);
+    runSequence('copy', 'inject', 'tscompile', cb);
 });
 
 gulp.task('serve', ['install'], serve);
