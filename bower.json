@@ -1,6 +1,6 @@
 {
   "name": "pour-fellow",
   "dependencies": {
-    "jquery": "^3.1.0"
+    "jquery": "components/jquery#^3.1.0"
   }
 }
