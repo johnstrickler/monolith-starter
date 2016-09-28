@@ -11,3 +11,4 @@ typings/
 *.orig
 atlassian-ide-plugin.xml
 npm-debug.log
+.idea/libraries
