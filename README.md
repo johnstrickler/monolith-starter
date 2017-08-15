@@ -1,5 +1,5 @@
-# pour-fellow
-This is a personal sandbox project.  My goal is to make it a modern, lightweight sample application that makes use of the following:
+# Monolith Starter
+The goal of this project is to make it a modern, lightweight sample application that makes use of the following:
 
 - Spring Boot
 - Maven (server-side dependency and building)
